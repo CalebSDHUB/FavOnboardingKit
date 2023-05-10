@@ -2,6 +2,8 @@
 
 FavOnboardingKit provides an onboarding flow that is simple and easy to implement.
 
+![App start screen](video-preview.gif)
+
 ## Contents
 
 - [Requirements](#requirements)
