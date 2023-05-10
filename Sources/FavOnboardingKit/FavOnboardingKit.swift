@@ -6,6 +6,7 @@ public protocol FavOnboardingKitDelegate: AnyObject {
 }
 
 public final class FavOnboardingKit {
+    private let themeFont: UIFont
     private let slides: [Slide]
     private let tintColor: UIColor
     private var rootCV: UIViewController?
@@ -15,7 +16,7 @@ public final class FavOnboardingKit {
     private lazy var onboardingViewController: OnboardingViewController = {
         let controller = OnboardingViewController(
             slides: slides,
-            tintColor: tintColor)
+            tintColor: tintColor, themeFont: themeFont)
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .fullScreen
         controller.nextButtonDidTap = { [weak self] index in
@@ -27,9 +28,12 @@ public final class FavOnboardingKit {
         return controller
     }()
     
-    public init(slides: [Slide], tintColor: UIColor) {
+    public init(slides: [Slide],
+                tintColor: UIColor,
+                themeFont: UIFont = UIFont(name: "ArialRoundedMTBold", size: 28) ?? UIFont.systemFont(ofSize: 28, weight: .bold)) {
         self.slides = slides
         self.tintColor = tintColor
+        self.themeFont = themeFont
     }
     
     public func launchOnboarding(rootVC: UIViewController) {
